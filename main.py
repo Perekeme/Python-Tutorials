@@ -8,8 +8,6 @@ def get_choices():
     choices= {"player":player_choice,"computer":computer_choice}
     return choices
 
-# print(get_choices())
-
 def check_win(player, computer):
     print(f" you chose  {player}  and Computer chose {computer}")
     if player == computer:
@@ -27,7 +25,7 @@ answers= get_choices()
 print(check_win(answers["player"], answers["computer"]))
 print(type("player_choicefd") == str)
 
-
+# this code has bug that makes any input other than the intended ones to allow the user to win
 
 
 
