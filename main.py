@@ -1,46 +1,50 @@
 import random
 
+# Rock, Paper, Scissors Game
 
-options =["rock", "paper", "scissors"]
+# This are the options for the computer to choose from
+options = ["rock", "paper", "scissors"] 
 
+# This fn gets the users input and makes sure it is correct
 def get_choices():
+    computer_choice = random.choice(options) #sets a random answer for the computer
     player_choice = input("Enter a choice (rock,paper,scissors):")
     if player_choice == "rock":
-        computer_choice = random.choice(options)
-        choices= {"player":player_choice,"computer":computer_choice}
-        return choices
-    elif player_choice== "paper":
-        computer_choice = random.choice(options)
-        choices= {"player":player_choice,"computer":computer_choice}
-        return choices
-    elif player_choice== "scissors":
-        computer_choice = random.choice(options)
-        choices= {"player":player_choice,"computer":computer_choice}
-        return choices
+        choices = {"player": player_choice, "computer": computer_choice} #stores in the choices dict
+    elif player_choice == "paper":
+        choices = {"player": player_choice, "computer": computer_choice}
+    elif player_choice == "scissors":
+        choices = {"player": player_choice, "computer": computer_choice}
     else:
-        print("Choose between rock paper or scissors")
-        break
+        player_choice = "None" # for when the input is wrong, None is stored in the choices dict instead
+        choices = {"player": player_choice, "computer": computer_choice}
+    return choices
+    
 
 def check_win(player, computer):
-    print(f" you chose  {player}  and Computer chose {computer}")
-    if player == computer:
-        return "Draw"
-    elif player=="rock" and computer == "paper":
-        return "you lose"
-    elif player=="paper" and computer == "scissors":
-        return "you lose"
-    elif player=="scissors" and computer == "rock":
-        return "you lose"
-    else:
-        return "you win"
-answers= get_choices()
-
-print(check_win(answers["player"], answers["computer"]))
-print(type("player_choicefd") == str)
-
-# this code has bug that makes any input other than the intended ones to allow the user to win
+    result=""
+    if player != 'None': # checking if user input is correct
+        print(f" you chose  {player}  and Computer chose {computer}")
+        if player == computer:
+            result= "Draw"
+        elif player == "rock" and computer == "paper":
+            result= "you lose"
+        elif player == "paper" and computer == "scissors":
+            result= "you lose"
+        elif player == "scissors" and computer == "rock":
+            result= "you lose"
+        else:
+            result= "you win"
+        return result
+    return "Choose between rock paper or scissors"
 
 
+answers = get_choices() # store choices as answers
+# print(answers)     
+# # for debugging
 
- 
- 
+print(check_win(answers["player"], answers["computer"]))  # run game
+
+
+# (fixed)  this code has bug that makes any input other than the intended ones to allow the user to win
+# the code has been updated to solve the problem above. random inputs wont make u win
